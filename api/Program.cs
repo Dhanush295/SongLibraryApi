@@ -15,6 +15,9 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
 });
 builder.Services.AddScoped<ISongRepository, SongRepository>();
+builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
+
+
 
 var app = builder.Build();
 
