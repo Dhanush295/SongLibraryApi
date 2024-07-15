@@ -23,19 +23,5 @@ namespace api.Mappers
                 FilePath = songData.FilePath,
             };
         }
-
-        public static SongDisplayDto ToSongDispalyDto(this Song songModel)
-        {
-            return new SongDisplayDto
-            {
-                SongId = songModel.SongId,
-                Title = songModel.Title,
-                Artists = songModel.Artist,
-                Album = songModel.Album,
-                Year = songModel.Year,
-                Genere = songModel.Genere,
-                Comments = songModel.Comments,
-            };
-        }
     }
 }

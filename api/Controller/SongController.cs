@@ -47,7 +47,7 @@ namespace api.Controller
         public async Task<IActionResult> GetAll()
         {
             var songs = await _songRepo.GetAllAsync();
-            var songDto = songs.Select(s => s.ToSongDispalyDto());
+            var songDto = songs.Select(s => s.ToSongDto());
 
             return Ok(songDto);
         }
