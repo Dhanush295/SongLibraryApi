@@ -13,6 +13,7 @@ namespace api.Mappers
         public static SongDto ToSongDto(this Song songData)
         {
             return new SongDto{
+                SongId = songData.SongId,
                 Title = songData.Title,
                 Artists = songData.Artist,
                 Album = songData.Album,
@@ -20,6 +21,20 @@ namespace api.Mappers
                 Genere = songData.Genere,
                 Comments = songData.Comments,
                 FilePath = songData.FilePath,
+            };
+        }
+
+        public static SongDisplayDto ToSongDispalyDto(this Song songModel)
+        {
+            return new SongDisplayDto
+            {
+                SongId = songModel.SongId,
+                Title = songModel.Title,
+                Artists = songModel.Artist,
+                Album = songModel.Album,
+                Year = songModel.Year,
+                Genere = songModel.Genere,
+                Comments = songModel.Comments,
             };
         }
     }

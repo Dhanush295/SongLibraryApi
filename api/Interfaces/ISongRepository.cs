@@ -9,6 +9,8 @@ namespace api.Interfaces
     public interface ISongRepository
     {
         Task<Song> UploadAsync(IFormFile file);
+
+        Task<List<Song>> GetAllAsync();
         
     }
 }

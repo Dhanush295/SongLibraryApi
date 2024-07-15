@@ -40,5 +40,16 @@ namespace api.Controller
                 return BadRequest(ex.Message);
             }
         }
+
+
+        [HttpGet]
+
+        public async Task<IActionResult> GetAll()
+        {
+            var songs = await _songRepo.GetAllAsync();
+            var songDto = songs.Select(s => s.ToSongDispalyDto());
+
+            return Ok(songDto);
+        }
     }
 }

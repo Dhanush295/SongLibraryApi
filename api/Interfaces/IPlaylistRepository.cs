@@ -17,5 +17,8 @@ namespace api.Interfaces
         Task<Playlist?> UpdateAsync(int id, UpdatePlaylistDto updateDto);
 
         Task<Playlist?> DeleteAsync(int id);
+
+        Task AddSongToPlaylistAsync(AddSongToPlaylistDto dto);
+        
     }
 }

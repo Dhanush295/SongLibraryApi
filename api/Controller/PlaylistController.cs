@@ -20,6 +20,16 @@ namespace api.Controller
             _playlistRepo = playlistRepo;
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePlaylistAsync([FromBody] CreatePlaylistDto playlistDto)
+        {
+            var playlist = playlistDto.ToPlaylistCreateDto();
+            await _playlistRepo.CreateAsync(playlist);
+            return CreatedAtAction(nameof(GetByID), new {ID = playlist.PlaylistId}, playlist.ToPlaylistEntityDto());
+
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByID([FromRoute] int id)
         {
@@ -33,14 +43,7 @@ namespace api.Controller
             return Ok(playlist.ToPlaylistEntityDto());
         }
         
-        [HttpPost]
-        public async Task<IActionResult> CreatePlaylistAsync([FromBody] CreatePlaylistDto playlistDto)
-        {
-            var playlist = playlistDto.ToPlaylistCreateDto();
-            await _playlistRepo.CreateAsync(playlist);
-            return CreatedAtAction(nameof(GetByID), new {ID = playlist.PlaylistId}, playlist.ToPlaylistEntityDto());
-
-        }
+        
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -80,6 +83,21 @@ namespace api.Controller
             }
 
             return NoContent();
+        }
+
+
+        [HttpPost("AddSongToPlaylist")]
+        public async Task<IActionResult> AddSongToPlaylist(AddSongToPlaylistDto dto)
+        {
+            try
+            {
+                await _playlistRepo.AddSongToPlaylistAsync(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
         }
     }
 }

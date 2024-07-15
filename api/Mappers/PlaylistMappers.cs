@@ -23,6 +23,7 @@ namespace api.Mappers
             {
                 PlaylistId = playlist.PlaylistId,
                 PlaylistName = playlist.PlaylistName,
+                Songs = playlist.Songs.Select(ps => ps.Song.ToSongDto()).ToList()
             };
         }
     }

@@ -5,12 +5,9 @@ using System.Threading.Tasks;
 
 namespace api.Dtos
 {
-    public class ToPlaylistDto
+    public class AddSongToPlaylistDto
     {
         public int PlaylistId { get; set; }
-        public string PlaylistName { get; set; } = string.Empty;
-
-        public List<SongDto> Songs { get; set; } = new List<SongDto>();
-
+        public int SongId { get; set; }
     }
 }

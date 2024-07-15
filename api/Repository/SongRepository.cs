@@ -8,6 +8,7 @@ using api.Data;
 using api.Interfaces;
 using api.Model;
 using api.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
@@ -18,6 +19,12 @@ namespace api.Repository
         {
             _context = context;
         }
+
+        public async Task<List<Song>> GetAllAsync()
+        {
+            return await _context.Songs.ToListAsync();
+        }
+
         public async Task<Song> UploadAsync(IFormFile file)
         {
             if(file == null || file.Length == 0){

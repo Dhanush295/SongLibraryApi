@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Dtos
 {
-    public class SongDto
+    public class SongDisplayDto
     {
         public int SongId { get; set; }
         public string Title { get; set; } = string.Empty;
@@ -14,6 +14,5 @@ namespace api.Dtos
         public int Year { get; set; }
         public string Genere { get; set; } = string.Empty;
         public string Comments { get; set; } = string.Empty;
-        public string FilePath { get; set; } = string.Empty;
     }
 }
