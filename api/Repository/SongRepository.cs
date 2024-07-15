@@ -73,10 +73,6 @@ namespace api.Repository
                 Comments = comments,
                 FilePath = filePath
             };
-
-            // Log the title for debugging
-            Console.WriteLine($"Title: {title}");
-
             return song;
             }
     }
